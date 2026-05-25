@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Untuk Hilda — Cinta Pertama yang Paling Berharga</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --pink:#FF6B9D;--pink2:#F472B6;--pink3:#EC4899;--pink-light:#FCE7F3;
+  --rose:#FB7185;--rose2:#F43F5E;--gold:#FFD700;--gold2:#FFC44D;
+  --violet:#C084FC;--violet2:#A855F7;--cream:#FFF1F2;--cream2:#FFE4E6;
+  --bg:#1a0a12;--bg2:#2d1218;--bg3:#3d1a24;--bg4:#4a202e;
+  --text:#fff0f3;--text2:#f9a8d4;--text3:#f472b6;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+#particles-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}
+section{position:relative;z-index:1;padding:100px 20px}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,10,18,0.9);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,107,157,0.15);display:flex;align-items:center;justify-content:space-between;padding:14px 40px;transition:all 0.4s}
+.nav-scrolled{padding:10px 40px;background:rgba(26,10,18,0.95);border-bottom-color:rgba(255,107,157,0.3)}
+.nav-logo{font-family:'Playfair Display',serif;color:var(--pink);font-size:1.25rem;font-style:italic;letter-spacing:0.5px}
+.nav-logo span{font-weight:900;color:var(--gold)}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{color:var(--text2);text-decoration:none;font-size:0.8rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;transition:all 0.3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:50%;transform:translateX(-50%);width:0;height:2px;background:var(--pink);border-radius:2px;transition:width 0.3s}
+.nav-links a:hover{color:var(--pink)}
+.nav-links a:hover::after{width:100%}
+#hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 20px 80px;position:relative;overflow:hidden}
+#hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 50% 30%,rgba(255,107,157,0.1) 0%,transparent 60%),radial-gradient(ellipse at 80% 80%,rgba(255,215,0,0.05) 0%,transparent 50%);z-index:0;pointer-events:none}
+.hero-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:700px;background:radial-gradient(circle,rgba(255,107,157,0.12) 0%,transparent 70%);border-radius:50%;pointer-events:none;animation:pulseGlow 4s ease-in-out infinite}
+@keyframes pulseGlow{0%,100%{opacity:0.5;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.15)}}
+.hero-badge{display:inline-block;border:1px solid rgba(255,107,157,0.4);color:var(--pink2);font-size:0.72rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;padding:7px 22px;border-radius:50px;margin-bottom:30px;background:rgba(255,107,157,0.05);position:relative;z-index:1;animation:fadeDown 1s ease both}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(3rem,10vw,7rem);font-weight:900;line-height:1.05;margin-bottom:12px;position:relative;z-index:1;background:linear-gradient(135deg,#fff 0%,var(--pink) 30%,var(--gold) 50%,var(--violet) 80%,var(--pink2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;background-size:400% 400%;animation:shimmer 5s ease infinite,fadeDown 1.2s ease 0.2s both}
+@keyframes shimmer{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.hero-subtitle{font-size:clamp(1rem,2.5vw,1.4rem);color:var(--text2);font-style:italic;margin-bottom:16px;position:relative;z-index:1;animation:fadeDown 1s ease 0.5s both}
+.hero-name{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,6.5vw,4.5rem);font-weight:700;color:var(--pink);letter-spacing:1px;position:relative;z-index:1;text-shadow:0 0 50px rgba(255,107,157,0.5),0 0 100px rgba(255,107,157,0.2);animation:fadeDown 1s ease 0.7s both,glow 3s ease infinite}
+@keyframes glow{0%,100%{text-shadow:0 0 40px rgba(255,107,157,0.4),0 0 80px rgba(255,107,157,0.1)}50%{text-shadow:0 0 80px rgba(255,107,157,0.8),0 0 120px rgba(244,114,182,0.4),0 0 160px rgba(255,215,0,0.2)}}
+.hero-age{font-family:'Caveat',cursive;font-size:clamp(1.8rem,4vw,3rem);color:var(--gold);margin-top:8px;position:relative;z-index:1;animation:fadeDown 1s ease 0.9s both}
+.hero-cake{margin:36px 0;position:relative;z-index:1;animation:fadeDown 1s ease 1.1s both,float 4s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+.hero-desc{max-width:520px;color:var(--text3);font-size:0.95rem;line-height:1.8;position:relative;z-index:1;animation:fadeDown 1s ease 1.3s both}
+.cta-btn{display:inline-block;margin-top:28px;padding:16px 44px;border:2px solid var(--pink);color:var(--pink);background:rgba(255,107,157,0.06);font-family:'DM Sans',sans-serif;font-weight:600;font-size:1rem;letter-spacing:0.06em;border-radius:50px;cursor:pointer;text-decoration:none;position:relative;overflow:hidden;z-index:1;transition:all 0.4s;animation:fadeDown 1s ease 1.5s both}
+.cta-btn:hover{background:rgba(255,107,157,0.18);transform:translateY(-3px);box-shadow:0 20px 60px rgba(255,107,157,0.25)}
+.cta-btn::after{content:'';position:absolute;top:50%;left:50%;width:0;height:0;background:rgba(255,107,157,0.2);border-radius:50%;transform:translate(-50%,-50%);transition:width 0.6s,height 0.6s;z-index:-1}
+.cta-btn:active::after{width:300px;height:300px}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-28px)}to{opacity:1;transform:translateY(0)}}
+.confetti{position:fixed;top:-20px;z-index:5;width:10px;height:10px;border-radius:2px;pointer-events:none}
+#countdown{background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%);text-align:center;position:relative;overflow:hidden}
+#countdown::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(circle at 20% 50%,rgba(255,107,157,0.05) 0%,transparent 50%),radial-gradient(circle at 80% 50%,rgba(255,215,0,0.03) 0%,transparent 50%)}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,5.5vw,3.2rem);font-weight:700;color:var(--pink);margin-bottom:10px;position:relative;z-index:1}
+.section-sub{color:var(--text2);font-size:0.95rem;margin-bottom:60px;font-style:italic;position:relative;z-index:1}
+.flip-cards{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:24px;position:relative;z-index:1}
+.flip-card{background:var(--bg3);border:1px solid rgba(255,107,157,0.18);border-radius:20px;padding:28px 24px;min-width:110px;text-align:center;position:relative;overflow:hidden;box-shadow:0 10px 50px rgba(0,0,0,0.5);transition:transform 0.3s,border-color 0.3s}
+.flip-card:hover{transform:translateY(-6px);border-color:rgba(255,107,157,0.4)}
+.flip-card::before{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:rgba(255,107,157,0.1)}
+.flip-card-num{font-family:'Playfair Display',serif;font-size:3.8rem;font-weight:900;color:var(--pink);line-height:1;display:block;transition:all 0.2s}
+.flip-card-label{font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--text2);margin-top:10px;display:block;font-weight:500}
+.today-msg{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3rem);font-weight:700;color:var(--pink);animation:glow 2s ease infinite;display:none;position:relative;z-index:1}
+.today-sub{color:var(--text2);font-size:1.1rem;margin-top:12px;font-style:italic;display:none;position:relative;z-index:1}
+.aurora-bg{position:absolute;top:0;left:0;right:0;bottom:0;z-index:0;background:linear-gradient(45deg,rgba(255,107,157,0.04) 0%,rgba(255,215,0,0.05) 25%,rgba(255,107,157,0.04) 50%,rgba(255,215,0,0.03) 75%,rgba(255,107,157,0.04) 100%);background-size:400% 400%;animation:aurora 10s ease-in-out infinite}
+@keyframes aurora{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+#memories{background:var(--bg);position:relative}
+#memories::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,107,157,0.3),transparent)}
+.memory-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;max-width:1000px;margin:0 auto}
+.memory-card{border-radius:20px;overflow:hidden;cursor:pointer;position:relative;height:240px;transition:transform 0.5s cubic-bezier(.34,1.56,.64,1),box-shadow 0.5s;border:1px solid rgba(255,255,255,0.05)}
+.memory-card:hover{transform:translateY(-14px) scale(1.02);box-shadow:0 40px 90px rgba(0,0,0,0.6)}
+.memory-card .inner{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:20px}
+.memory-emoji{font-size:3.5rem;margin-bottom:14px;z-index:1;transition:transform 0.5s cubic-bezier(.34,1.56,.64,1)}
+.memory-card:hover .memory-emoji{transform:scale(1.4) rotate(12deg)}
+.memory-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;z-index:1;text-align:center;padding:0 16px;line-height:1.4}
+.memory-overlay{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.85);backdrop-filter:blur(12px);padding:22px 18px;transform:translateY(100%);transition:transform 0.45s cubic-bezier(.4,0,.2,1)}
+.memory-card:hover .memory-overlay{transform:translateY(0)}
+.memory-caption{font-size:0.9rem;color:rgba(255,255,255,0.9);font-style:italic;line-height:1.7}
+.gold-border{border:1px solid rgba(255,107,157,0.25)}
+#lightbox{position:fixed;top:0;left:0;right:0;bottom:0;z-index:999;background:rgba(0,0,0,0.88);backdrop-filter:blur(25px);display:none;align-items:center;justify-content:center}
+#lightbox.open{display:flex}
+.lightbox-inner{background:var(--bg3);border:1px solid rgba(255,107,157,0.25);border-radius:28px;padding:55px 45px;text-align:center;max-width:560px;width:90%;animation:popIn 0.5s cubic-bezier(.34,1.56,.64,1);position:relative}
+.lightbox-inner::before{content:'';position:absolute;top:-1px;left:20%;right:20%;height:2px;background:linear-gradient(90deg,transparent,var(--pink),transparent);border-radius:2px}
+@keyframes popIn{from{transform:scale(0.6) rotate(-3deg);opacity:0}to{transform:scale(1) rotate(0deg);opacity:1}}
+.lb-emoji{font-size:5.5rem;margin-bottom:22px;display:block;animation:emojiPop 0.6s cubic-bezier(.34,1.56,.64,1) both}
+@keyframes emojiPop{from{transform:scale(0)}to{transform:scale(1)}}
+.lb-title{font-family:'Playfair Display',serif;font-size:2rem;color:var(--pink);margin-bottom:14px}
+.lb-caption{color:var(--text2);font-style:italic;line-height:1.8;font-size:0.95rem}
+.lb-close{margin-top:32px;padding:12px 36px;background:rgba(255,107,157,0.1);border:1px solid rgba(255,107,157,0.4);border-radius:50px;color:var(--pink);font-size:0.92rem;cursor:pointer;transition:all 0.3s}
+.lb-close:hover{background:rgba(255,107,157,0.25);transform:scale(1.05)}
+#letter{background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%);text-align:center;position:relative}
+#letter::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,107,157,0.3),transparent)}
+.letter-wrapper{max-width:680px;margin:0 auto}
+.letter-card{background:linear-gradient(135deg,#2d1218 0%,#3d1a24 100%);border:1px solid rgba(255,107,157,0.2);border-radius:24px;padding:55px 48px;position:relative;text-align:left;box-shadow:0 50px 120px rgba(0,0,0,0.55);overflow:hidden}
+.letter-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--pink),var(--gold),var(--violet),var(--pink));background-size:300% 100%;animation:shimmer 4s linear infinite;border-radius:24px 24px 0 0}
+.letter-seal{position:absolute;top:-22px;right:35px;font-size:2.2rem;filter:drop-shadow(0 4px 12px rgba(255,0,0,0.35));animation:wiggle 3s ease-in-out infinite}
+@keyframes wiggle{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+.letter-date{font-size:0.78rem;color:var(--text2);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:32px;font-style:italic}
+.letter-body{font-size:1.02rem;line-height:2;color:rgba(255,255,255,0.85)}
+.letter-body p{margin-bottom:20px}
+#typewriter-cursor{color:var(--pink);animation:blink 1s step-end infinite;font-weight:300}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.letter-sig{margin-top:36px;font-family:'Caveat',cursive;font-size:1.8rem;color:var(--pink);opacity:0;transition:opacity 2s;text-align:right}
+.letter-sig.show{opacity:1}
+#wishes{background:var(--bg);text-align:center;position:relative}
+#wishes::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,107,157,0.3),transparent)}
+.wish-input-wrap{display:flex;gap:14px;max-width:560px;margin:0 auto 50px}
+.wish-input{flex:1;padding:16px 24px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,107,157,0.2);border-radius:50px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:0.95rem;outline:none;transition:all 0.3s}
+.wish-input:focus{border-color:rgba(255,107,157,0.55);background:rgba(255,107,157,0.06);box-shadow:0 0 30px rgba(255,107,157,0.08)}
+.wish-input::placeholder{color:var(--text3)}
+.wish-btn{padding:16px 30px;background:rgba(255,107,157,0.1);border:1px solid rgba(255,107,157,0.4);border-radius:50px;color:var(--pink);font-family:'DM Sans',sans-serif;font-weight:600;font-size:0.9rem;cursor:pointer;transition:all 0.3s;white-space:nowrap}
+.wish-btn:hover{background:rgba(255,107,157,0.25);transform:scale(1.06);box-shadow:0 10px 40px rgba(255,107,157,0.2)}
+.wishes-grid{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;max-width:900px;margin:0 auto}
+.wish-bubble-fly{position:fixed;bottom:-80px;z-index:50;background:rgba(255,107,157,0.1);border:1px solid rgba(255,107,157,0.3);border-radius:50px;padding:14px 26px;color:var(--text);font-size:0.92rem;pointer-events:none;animation:riseBubble 3s ease-out forwards;font-family:'Caveat',cursive;font-size:1.1rem}
+@keyframes riseBubble{0%{transform:translateY(0) scale(0.8);opacity:0}15%{transform:translateY(-20px) scale(1);opacity:1}80%{opacity:0.7}100%{transform:translateY(-110vh) scale(1.1);opacity:0}}
+.wish-note{background:rgba(255,107,157,0.06);border:1px solid rgba(255,107,157,0.18);border-radius:18px;padding:18px 22px;max-width:240px;text-align:left;font-size:0.9rem;color:var(--text);line-height:1.7;animation:popIn 0.5s cubic-bezier(.34,1.56,.64,1);transition:transform 0.3s}
+.wish-note:hover{transform:translateY(-4px)}
+.wish-note-icon{font-size:1.3rem;margin-bottom:10px;display:block}
+.wish-note-author{font-size:0.75rem;color:var(--text3);margin-top:8px;font-style:italic}
+#trivia{background:var(--bg2);text-align:center;position:relative}
+#trivia::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,107,157,0.3),transparent)}
+.trivia-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;max-width:1000px;margin:0 auto}
+.trivia-card{height:200px;perspective:700px;cursor:pointer}
+.trivia-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 0.8s cubic-bezier(.4,0,.2,1)}
+.trivia-card.flipped .trivia-inner{transform:rotateY(180deg)}
+.trivia-front,.trivia-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px;text-align:center;transition:box-shadow 0.3s}
+.trivia-front{background:var(--bg3);border:1px solid rgba(255,107,157,0.15)}
+.trivia-front:hover{box-shadow:0 20px 60px rgba(255,107,157,0.1)}
+.trivia-back{background:linear-gradient(135deg,rgba(255,107,157,0.12),rgba(255,107,157,0.08));border:1px solid rgba(255,107,157,0.35);transform:rotateY(180deg)}
+.trivia-q-icon{font-size:2.2rem;margin-bottom:12px}
+.trivia-q-text{font-size:0.88rem;color:var(--text2);line-height:1.6}
+.trivia-a-text{font-size:0.92rem;color:var(--pink);font-weight:500;line-height:1.7}
+#gallery{background:var(--bg);text-align:center;position:relative}
+#gallery::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,107,157,0.3),transparent)}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;max-width:1000px;margin:0 auto}
+.gallery-item{border-radius:18px;overflow:hidden;height:240px;position:relative;border:1px solid rgba(255,255,255,0.06);cursor:pointer;transition:transform 0.4s,box-shadow 0.4s}
+.gallery-item:hover{transform:scale(1.03) translateY(-6px);box-shadow:0 25px 60px rgba(0,0,0,0.5)}
+.gallery-item .g-inner{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative}
+.gallery-emoji{font-size:4rem;transition:transform 0.4s}
+.gallery-item:hover .gallery-emoji{transform:scale(1.2)}
+.gallery-label{font-family:'Playfair Display',serif;font-size:1rem;margin-top:12px;color:var(--text)}
+.gallery-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.4s}
+.gallery-item:hover .gallery-overlay{opacity:1}
+.gallery-overlay span{color:var(--pink);font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600}
+#quote{background:linear-gradient(180deg,var(--bg2) 0%,var(--bg) 100%);text-align:center;padding:120px 20px;position:relative}
+#quote::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,107,157,0.3),transparent)}
+.quote-box{max-width:700px;margin:0 auto;position:relative}
+.quote-mark{font-family:'Playfair Display',serif;font-size:8rem;color:rgba(255,107,157,0.1);line-height:0;position:absolute;top:20px;left:-20px}
+.quote-text{font-family:'Playfair Display',serif;font-size:clamp(1.3rem,3vw,1.8rem);color:var(--text);line-height:1.8;font-style:italic}
+.quote-author{color:var(--pink);margin-top:24px;font-family:'Caveat',cursive;font-size:1.6rem}
+#cake-section{background:var(--bg);text-align:center;position:relative}
+#cake-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,107,157,0.3),transparent)}
+.cake-instruction{color:var(--text2);font-style:italic;margin-bottom:50px;font-size:1rem}
+#cake-container{position:relative;display:inline-block;cursor:default}
+.cake-msg-overlay{position:fixed;top:0;left:0;right:0;bottom:0;z-index:900;background:rgba(0,0,0,0.75);display:none;align-items:center;justify-content:center}
+.cake-msg-overlay.show{display:flex;animation:fadeIn 0.6s ease}
+.cake-msg-box{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:900;color:var(--pink);text-align:center;padding:40px;animation:bounceIn 0.7s cubic-bezier(.34,1.56,.64,1);text-shadow:0 0 70px rgba(255,107,157,0.8)}
+.cake-msg-box .sub{font-size:1.3rem;color:rgba(255,255,255,0.6);font-family:'DM Sans',sans-serif;font-weight:400;margin-top:16px;display:block}
+@keyframes bounceIn{from{transform:scale(0.2);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.relight-btn{margin-top:28px;padding:14px 36px;background:rgba(255,107,157,0.1);border:1px solid rgba(255,107,157,0.4);border-radius:50px;color:var(--pink);font-size:0.95rem;cursor:pointer;transition:all 0.3s}
+.relight-btn:hover{background:rgba(255,107,157,0.25);transform:scale(1.06);box-shadow:0 10px 40px rgba(255,107,157,0.2)}
+footer{background:var(--bg2);text-align:center;padding:70px 20px 50px;border-top:1px solid rgba(255,107,157,0.08);position:relative;overflow:hidden;z-index:1}
+.footer-main{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--text2);font-style:italic;margin-bottom:28px;line-height:1.8}
+.footer-main span{color:var(--pink)}
+.footer-age{font-family:'Caveat',cursive;font-size:2rem;color:var(--gold);margin-top:8px;display:block}
+.share-btns{display:flex;gap:14px;justify-content:center;margin-bottom:40px;flex-wrap:wrap}
+.share-btn{padding:12px 26px;border:1px solid rgba(255,255,255,0.12);border-radius:50px;background:rgba(255,255,255,0.03);color:var(--text2);font-size:0.85rem;font-weight:500;cursor:pointer;transition:all 0.3s}
+.share-btn:hover{border-color:rgba(255,107,157,0.35);color:var(--pink);background:rgba(255,107,157,0.06);transform:translateY(-2px)}
+.footer-small{font-size:0.82rem;color:rgba(255,255,255,0.25);letter-spacing:0.08em}
+#shooting-star{position:absolute;top:40px;left:-120px;width:100px;height:2px;background:linear-gradient(90deg,transparent,var(--pink),transparent);border-radius:2px;animation:shoot 4s linear infinite}
+@keyframes shoot{0%{left:-120px;top:40px;opacity:0}15%{opacity:1}100%{left:110%;top:100px;opacity:0}}
+#music-player{position:fixed;bottom:28px;right:28px;z-index:200;background:rgba(26,10,18,0.95);border:1px solid rgba(255,107,157,0.25);border-radius:50px;padding:14px 22px;cursor:pointer;display:flex;align-items:center;gap:14px;backdrop-filter:blur(20px);transition:all 0.3s;box-shadow:0 10px 50px rgba(0,0,0,0.5)}
+#music-player:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(255,107,157,0.25)}
+#music-player.playing{border-color:rgba(255,107,157,0.6);box-shadow:0 0 40px rgba(255,107,157,0.25)}
+.player-icon{font-size:1.3rem;transition:transform 0.3s}
+#music-player.playing .player-icon{animation:spin 3s linear infinite}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.player-label{font-size:0.82rem;font-weight:500;color:var(--text2);white-space:nowrap}
+.player-label.playing{color:var(--pink)}
+.equalizer{display:flex;gap:3px;align-items:flex-end;height:18px}
+.eq-bar{width:3px;background:var(--pink);border-radius:2px;animation:none;transition:height 0.2s}
+.playing .eq-bar{animation:eqAnim 0.7s ease-in-out infinite}
+.eq-bar:nth-child(1){height:4px}
+.eq-bar:nth-child(2){animation-delay:0.1s;height:8px}
+.eq-bar:nth-child(3){animation-delay:0.2s;height:14px}
+.eq-bar:nth-child(4){animation-delay:0.15s;height:6px}
+.eq-bar:nth-child(5){animation-delay:0.05s;height:10px}
+@keyframes eqAnim{0%,100%{height:4px}50%{height:18px}}
+.reveal{opacity:0;transform:translateY(50px);transition:opacity 0.8s ease,transform 0.8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:rgba(255,107,157,0.25);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:rgba(255,107,157,0.4)}
+.sparkle{position:fixed;pointer-events:none;z-index:10;border-radius:50%;animation:sparkleAnim 1.5s ease-out forwards}
+@keyframes sparkleAnim{0%{transform:scale(0) rotate(0deg);opacity:1}50%{transform:scale(1.2) rotate(180deg);opacity:0.8}100%{transform:scale(0) rotate(360deg);opacity:0}}
+.heart-beat{animation:heartBeat 1.5s ease infinite;display:inline-block}
+@keyframes heartBeat{0%,100%{transform:scale(1)}14%{transform:scale(1.3)}28%{transform:scale(1)}42%{transform:scale(1.3)}70%{transform:scale(1)}}
+@media(max-width:768px){nav{padding:12px 20px}.nav-links{gap:16px}.nav-links a{font-size:0.7rem;letter-spacing:0.06em}section{padding:70px 16px}.flip-card{min-width:80px;padding:20px 16px}.flip-card-num{font-size:2.8rem}.letter-card{padding:35px 24px}.wish-input-wrap{flex-direction:column}.wish-input{width:100%}.memory-grid{grid-template-columns:1fr}.trivia-grid{grid-template-columns:1fr}.gallery-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<canvas id="particles-canvas"></canvas>
+
+<nav id="main-nav">
+  <div class="nav-logo">💕 <span>Hilda</span></div>
+  <ul class="nav-links">
+    <li><a href="#countdown">Hitung Mundur</a></li>
+    <li><a href="#memories">Kenangan</a></li>
+    <li><a href="#letter">Surat</a></li>
+    <li><a href="#wishes">Harapan</a></li>
+    <li><a href="#gallery">Galeri</a></li>
+    <li><a href="#cake-section">Kue</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-badge">💕 Cinta Pertama yang Paling Berharga 💕</div>
+  <h1 class="hero-title">Happy Birthday!</h1>
+  <p class="hero-subtitle">Untuk seseorang yang mengubah segalanya,</p>
+  <div class="hero-name" id="hero-name">Hilda Meilinda Putri</div>
+  <div class="hero-age">17 tahun yang penuh keajaiban 💖</div>
+
+  <div class="hero-cake">
+    <svg width="160" height="150" viewBox="0 0 160 150">
+      <defs>
+        <linearGradient id="flameGrad1" x1="0%" y1="100%" x2="0%" y2="0%"><stop offset="0%" style="stop-color:#ff6b9d;stop-opacity:0.9"/><stop offset="100%" style="stop-color:#ffd700;stop-opacity:0.95"/></linearGradient>
+        <linearGradient id="flameGrad2" x1="0%" y1="100%" x2="0%" y2="0%"><stop offset="0%" style="stop-color:#FFD700;stop-opacity:0.95"/><stop offset="100%" style="stop-color:#ff8c00;stop-opacity:1"/></linearGradient>
+        <linearGradient id="flameGrad3" x1="0%" y1="100%" x2="0%" y2="0%"><stop offset="0%" style="stop-color:#F472B6;stop-opacity:0.9"/><stop offset="100%" style="stop-color:#C084FC;stop-opacity:0.95"/></linearGradient>
+      </defs>
+      <ellipse cx="80" cy="135" rx="65" ry="14" fill="rgba(255,107,157,0.1)" stroke="rgba(255,107,157,0.3)" stroke-width="1"/>
+      <rect x="22" y="88" width="116" height="44" rx="12" fill="#2d1218" stroke="rgba(255,107,157,0.4)" stroke-width="1.2"/>
+      <path d="M22 88 Q38 76 54 88 Q70 100 86 88 Q102 76 118 88 Q134 100 138 88 L138 88 L138 93 Q134 105 118 93 Q102 81 86 93 Q70 105 54 93 Q38 81 22 93 Z" fill="rgba(255,107,157,0.2)"/>
+      <rect x="36" y="52" width="88" height="38" rx="10" fill="#3d1a24" stroke="rgba(244,114,182,0.35)" stroke-width="1.2"/>
+      <path d="M36 52 Q50 40 64 52 Q78 64 92 52 Q106 40 120 52 Q126 64 124 52 L124 57 Q120 69 106 57 Q92 45 78 57 Q64 69 50 57 Q36 45 36 57 Z" fill="rgba(244,114,182,0.18)"/>
+      <text x="80" y="78" text-anchor="middle" font-size="18" fill="rgba(255,107,157,0.5)">♥</text>
+      <rect x="48" y="32" width="9" height="24" rx="4.5" fill="#ff6b9d"/>
+      <rect x="74" y="26" width="9" height="30" rx="4.5" fill="#FFD700"/>
+      <rect x="100" y="32" width="9" height="24" rx="4.5" fill="#F472B6"/>
+      <ellipse cx="52.5" cy="26" rx="5.5" ry="9" fill="url(#flameGrad1)" style="animation:flicker1 1.5s ease-in-out infinite"/>
+      <ellipse cx="78.5" cy="19" rx="5.5" ry="10" fill="url(#flameGrad2)" style="animation:flicker2 1.3s ease-in-out infinite"/>
+      <ellipse cx="104.5" cy="26" rx="5.5" ry="9" fill="url(#flameGrad3)" style="animation:flicker3 1.7s ease-in-out infinite"/>
+      <ellipse cx="52.5" cy="29" rx="3" ry="4.5" fill="rgba(255,255,200,0.7)" style="animation:flicker1 1.5s ease-in-out infinite"/>
+      <ellipse cx="78.5" cy="22" rx="3" ry="5" fill="rgba(255,255,200,0.7)" style="animation:flicker2 1.3s ease-in-out infinite"/>
+      <ellipse cx="104.5" cy="29" rx="3" ry="4.5" fill="rgba(255,255,200,0.7)" style="animation:flicker3 1.7s ease-in-out infinite"/>
+    </svg>
+  </div>
+
+  <p class="hero-desc">
+    Dari awal pertemuan yang terasa seperti mimpi, hingga kini aku sadar bahwa kamu adalah kenyataan terindah dalam hidupku. Selamat ulang tahun, sayangku.
+  </p>
+  <a href="#countdown" class="cta-btn">Rayakan Bersama 💕</a>
+</section>
+
+<style>
+@keyframes flicker1{0%,100%{transform:scaleY(1) translateX(0)}25%{transform:scaleY(1.1) translateX(-1px)}50%{transform:scaleY(0.9) translateX(1px)}75%{transform:scaleY(1.05) translateX(-0.5px)}}
+@keyframes flicker2{0%,100%{transform:scaleY(1) translateX(0)}30%{transform:scaleY(0.95) translateX(1px)}60%{transform:scaleY(1.08) translateX(-1px)}}
+@keyframes flicker3{0%,100%{transform:scaleY(1) translateX(0)}20%{transform:scaleY(1.12) translateX(-1px)}55%{transform:scaleY(0.88) translateX(1px)}80%{transform:scaleY(1.05) translateX(0)}}
+</style>
+
+<section id="countdown">
+  <div class="aurora-bg"></div>
+  <div style="position:relative;z-index:1">
+    <div class="section-title reveal">⏳ Hitung Mundur</div>
+    <div class="section-sub reveal">Menuju hari yang paling ajaib untuk orang yang paling aku sayang</div>
+    <div class="flip-cards reveal">
+      <div class="flip-card"><span class="flip-card-num" id="cd-d">00</span><span class="flip-card-label">Hari</span></div>
+      <div class="flip-card"><span class="flip-card-num" id="cd-h">00</span><span class="flip-card-label">Jam</span></div>
+      <div class="flip-card"><span class="flip-card-num" id="cd-m">00</span><span class="flip-card-label">Menit</span></div>
+      <div class="flip-card"><span class="flip-card-num" id="cd-s">00</span><span class="flip-card-label">Detik</span></div>
+    </div>
+    <div class="today-msg" id="today-msg">🎂 HARI INI ADALAH HARINYA! 🎂</div>
+    <div class="today-sub" id="today-sub">Semua lilin sudah siap ditiup, sayangku 💕</div>
+  </div>
+</section>
+
+<section id="memories">
+  <div class="section-title reveal">📸 Dinding Kenangan</div>
+  <div class="section-sub reveal">Setiap momen bersamamu adalah kisah yang tak tergantikan</div>
+  <div class="memory-grid reveal">
+    <div class="memory-card gold-border" onclick="openLightbox(0)" style="background:linear-gradient(135deg,#2d1218,#4a1a2e)">
+      <div class="inner">
+        <div class="memory-emoji">✨</div>
+        <div class="memory-title">Pertemuan Pertama</div>
+        <div class="memory-overlay">
+          <p class="memory-caption">Hari itu rasanya seperti mimpi. Aku bertemu seseorang yang ternyata akan mengubah seluruh hidupku. Kamu datang tanpa peringatan, tapi tinggal selamanya di hatiku 💫</p>
+        </div>
+      </div>
+    </div>
+    <div class="memory-card" onclick="openLightbox(1)" style="background:linear-gradient(135deg,#1a2a3a,#2a3a4a)">
+      <div class="inner">
+        <div class="memory-emoji">💘</div>
+        <div class="memory-title">Saat Aku Jatuh Cinta</div>
+        <div class="memory-overlay">
+          <p class="memory-caption">Aku nggak tahu persis kapan rasanya mulai tumbuh. Mungkin saat kamu tertawa, mungkin saat kamu cerita, mungkin saat kamu diam aja aku udah senang. Yang jelas, hatiku memilihmu 💕</p>
+        </div>
+      </div>
+    </div>
+    <div class="memory-card" onclick="openLightbox(2)" style="background:linear-gradient(135deg,#2a1a3a,#3a1a4a)">
+      <div class="inner">
+        <div class="memory-emoji">😤</div>
+        <div class="memory-title">Sikapnya yang Ngeselin</div>
+        <div class="memory-overlay">
+          <p class="memory-caption">Kadang kamu bikin aku kesel, bikin aku bingung, bikin aku geleng-geleng kepala. Tapi di balik semua itu, ada senyum lucu yang selalu berhasil bikin aku lupa marah. Dasar, manis banget sih 😤💕</p>
+        </div>
+      </div>
+    </div>
+    <div class="memory-card" onclick="openLightbox(3)" style="background:linear-gradient(135deg,#3a1a1a,#4a2a2a)">
+      <div class="inner">
+        <div class="memory-emoji">🤗</div>
+        <div class="memory-title">Dia Menghargai Aku</div>
+        <div class="memory-overlay">
+          <p class="memory-caption">Kamu selalu lihat aku dengan cara yang beda. Kamu ngehargain hal-hal kecil, dengerin cerita-cerita gak pentingku, dan bikin aku ngerasa berharga. Terima kasih sudah menerima aku apa adanya 🤗</p>
+        </div>
+      </div>
+    </div>
+    <div class="memory-card" onclick="openLightbox(4)" style="background:linear-gradient(135deg,#1a3a2a,#2a4a3a)">
+      <div class="inner">
+        <div class="memory-emoji">🥺</div>
+        <div class="memory-title">Betapa Sayangnya Aku</div>
+        <div class="memory-overlay">
+          <p class="memory-caption">Aku nggak bisa jelasin dengan kata-kata seberapa sayangnya aku sama kamu. Yang aku tahu, setiap detik aku mikirin kamu, setiap hari aku bersyukur punya kamu. Kamu adalah rumahku 🥺💕</p>
+        </div>
+      </div>
+    </div>
+    <div class="memory-card" onclick="openLightbox(5)" style="background:linear-gradient(135deg,#3a2a1a,#4a3a2a)">
+      <div class="inner">
+        <div class="memory-emoji">🌟</div>
+        <div class="memory-title">Masa Depan Kita</div>
+        <div class="memory-overlay">
+          <p class="memory-caption">Aku nggak tahu apa yang akan terjadi nanti. Tapi satu hal yang pasti: aku mau terus ada di sampingmu, melewati setiap suka dan duka bersama. Ini baru awal, sayang. Masih banyak cerita indah yang akan kita tulis bersama 🌟</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="lightbox" onclick="closeLightbox()">
+  <div class="lightbox-inner" onclick="event.stopPropagation()">
+    <span class="lb-emoji" id="lb-emoji"></span>
+    <h2 class="lb-title" id="lb-title"></h2>
+    <p class="lb-caption" id="lb-caption"></p>
+    <button class="lb-close" onclick="closeLightbox()">Tutup ✕</button>
+  </div>
+</div>
+
+<section id="letter">
+  <div class="letter-wrapper">
+    <div class="section-title reveal">💌 Surat Untukmu</div>
+    <div class="section-sub reveal">Kata-kata yang terlalu berharga untuk hanya dipendam</div>
+    <div class="letter-card reveal" id="letter-card">
+      <span class="letter-seal">💋</span>
+      <div class="letter-date">Untuk Hilda Meilinda Putri — di hari ulang tahunnya yang ke-17</div>
+      <div class="letter-body" id="letter-body"></div>
+      <div class="letter-sig" id="letter-sig">— Dengan sepenuh cinta dan rasa sayang yang tak terbatas 💕</div>
+    </div>
+  </div>
+</section>
+
+<section id="wishes">
+  <div class="section-title reveal">✨ Dinding Harapan</div>
+  <div class="section-sub reveal">Kirimkan doa dan harapan terbaikmu untuk Hilda!</div>
+  <div class="wish-input-wrap reveal">
+    <input class="wish-input" id="wish-input" placeholder="Tuliskan harapanmu untuk Hilda di sini..." maxlength="100" onkeydown="if(event.key==='Enter')sendWish()"/>
+    <button class="wish-btn" onclick="sendWish()">Kirim 💕</button>
+  </div>
+  <div class="wishes-grid" id="wishes-grid"></div>
+</section>
+
+<section id="trivia">
+  <div class="section-title reveal">🎊 Fakta Seru!</div>
+  <div class="section-sub reveal">Klik kartu untuk ungkap kejutan tentang Hilda</div>
+  <div class="trivia-grid reveal">
+    <div class="trivia-card" onclick="this.classList.toggle('flipped')">
+      <div class="trivia-inner">
+        <div class="trivia-front"><div class="trivia-q-icon">🌍</div><p class="trivia-q-text">Berapa banyak orang yang berbagi hari ulang tahun dengan Hilda?</p></div>
+        <div class="trivia-back"><p class="trivia-a-text">Sekitar <strong>21 juta orang</strong> di seluruh dunia lahir tanggal 26 Mei. Tapi cuma ada <strong>satu Hilda Meilinda Putri</strong> yang paling spesial buatmu 💕</p></div>
+      </div>
+    </div>
+    <div class="trivia-card" onclick="this.classList.toggle('flipped')">
+      <div class="trivia-inner">
+        <div class="trivia-front"><div class="trivia-q-icon">🕯️</div><p class="trivia-q-text">Dari mana tradisi meniup lilin ulang tahun?</p></div>
+        <div class="trivia-back"><p class="trivia-a-text">Tradisi ini berasal dari <strong>Yunani Kuno</strong> — mereka menyalakan lilin sebagai persembahan untuk Artemis. Sekarang, setiap lilin yang Hilda tiup adalah harapan baru untuk masa depan yang cerah 🕯️✨</p></div>
+      </div>
+    </div>
+    <div class="trivia-card" onclick="this.classList.toggle('flipped')">
+      <div class="trivia-inner">
+        <div class="trivia-front"><div class="trivia-q-icon">🎵</div><p class="trivia-q-text">Lagu "Happy Birthday" punya sejarah apa?</p></div>
+        <div class="trivia-back"><p class="trivia-a-text">Ditulis tahun <strong>1893</strong>, ini lagu paling sering dinyanyikan di dunia! Tapi versi terindah adalah saat kamu nyanyiin untuk Hilda dengan suara tulusmu 🎶💕</p></div>
+      </div>
+    </div>
+    <div class="trivia-card" onclick="this.classList.toggle('flipped')">
+      <div class="trivia-inner">
+        <div class="trivia-front"><div class="trivia-q-icon">💎</div><p class="trivia-q-text">Apa artinya Hilda masih hidup di usia 17?</p></div>
+        <div class="trivia-back"><p class="trivia-a-text">Jantungnya berdetak <strong>70–80 kali per menit</strong>. Sejak lahir, itu sudah <strong>miliaran detak</strong> yang luar biasa. Dan setiap detak itu adalah alasan kenapa dunia lebih indah 💓</p></div>
+      </div>
+    </div>
+    <div class="trivia-card" onclick="this.classList.toggle('flipped')">
+      <div class="trivia-inner">
+        <div class="trivia-front"><div class="trivia-q-icon">⭐</div><p class="trivia-q-text">Apa yang terjadi di alam semesta saat Hilda lahir?</p></div>
+        <div class="trivia-back"><p class="trivia-a-text">Bintang-bintang terus bersinar, galaksi terus berputar — dan alam semesta menjadi <strong>sedikit lebih indah</strong> karena kehadiran Hilda Meilinda Putri di dalamnya 🌌💕</p></div>
+      </div>
+    </div>
+    <div class="trivia-card" onclick="this.classList.toggle('flipped')">
+      <div class="trivia-inner">
+        <div class="trivia-front"><div class="trivia-q-icon">🎂</div><p class="trivia-q-text">Kenapa 17 tahun itu spesial?</p></div>
+        <div class="trivia-back"><p class="trivia-a-text">Di banyak budaya, 17 tahun adalah <strong>"Sweet Seventeen"</strong> — transisi dari remaja ke dewasa muda. Ini tahun di mana Hilda mulai menulis kisah hidupnya sendiri. Dan aku bersyukur bisa jadi bagiannya 💕</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="section-title reveal">🎨 Galeri Cinta</div>
+  <div class="section-sub reveal">Warna-warna kebahagiaan yang kamu bawa ke dalam hidupku</div>
+  <div class="gallery-grid reveal">
+    <div class="gallery-item" style="background:linear-gradient(135deg,#2d1218,#4a1a2e)">
+      <div class="g-inner">
+        <div class="gallery-emoji">🌸</div>
+        <div class="gallery-label">Keindahanmu</div>
+        <div class="gallery-overlay"><span>Lihat Lebih Dekat</span></div>
+      </div>
+    </div>
+    <div class="gallery-item" style="background:linear-gradient(135deg,#1a2a3a,#2a3a4a)">
+      <div class="g-inner">
+        <div class="gallery-emoji">☀️</div>
+        <div class="gallery-label">Senyummu</div>
+        <div class="gallery-overlay"><span>Lihat Lebih Dekat</span></div>
+      </div>
+    </div>
+    <div class="gallery-item" style="background:linear-gradient(135deg,#2a1a3a,#3a1a4a)">
+      <div class="g-inner">
+        <div class="gallery-emoji">🌙</div>
+        <div class="gallery-label">Kehangatanmu</div>
+        <div class="gallery-overlay"><span>Lihat Lebih Dekat</span></div>
+      </div>
+    </div>
+    <div class="gallery-item" style="background:linear-gradient(135deg,#3a1a1a,#4a2a2a)">
+      <div class="g-inner">
+        <div class="gallery-emoji">🔥</div>
+        <div class="gallery-label">Semangatmu</div>
+        <div class="gallery-overlay"><span>Lihat Lebih Dekat</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="quote">
+  <div class="quote-box reveal">
+    <div class="quote-mark">"</div>
+    <p class="quote-text">
+      Aku nggak tahu apa yang akan terjadi besok, atau tahun depan, atau sepuluh tahun lagi. Tapi yang aku tahu pasti adalah: aku mau terus ada di sampingmu, melewati setiap suka dan duka, sampai ujung waktu.
+    </p>
+    <div class="quote-author">— Untuk Hilda, cintaku yang abadi 💕</div>
+  </div>
+</section>
+
+<section id="cake-section">
+  <div class="section-title reveal">🎂 Tiup Lilin, Sayang!</div>
+  <p class="cake-instruction reveal">Klik setiap lilin satu per satu untuk meniupnya. Semoga semua harapanmu terkabul 💕</p>
+  <div id="cake-container" class="reveal">
+    <svg id="birthday-cake" viewBox="0 0 360 300" width="360" height="300">
+      <defs>
+        <linearGradient id="flamePink" x1="0%" y1="100%" x2="0%" y2="0%"><stop offset="0%" style="stop-color:#ff6b9d;stop-opacity:0.95"/><stop offset="100%" style="stop-color:#ffd700;stop-opacity:1"/></linearGradient>
+        <linearGradient id="flameGold" x1="0%" y1="100%" x2="0%" y2="0%"><stop offset="0%" style="stop-color:#FFD700;stop-opacity:0.95"/><stop offset="100%" style="stop-color:#ff8c00;stop-opacity:1"/></linearGradient>
+        <linearGradient id="flameBlue" x1="0%" y1="100%" x2="0%" y2="0%"><stop offset="0%" style="stop-color:#38BDF8;stop-opacity:0.95"/><stop offset="100%" style="stop-color:#C084FC;stop-opacity:1"/></linearGradient>
+        <linearGradient id="flamePurple" x1="0%" y1="100%" x2="0%" y2="0%"><stop offset="0%" style="stop-color:#C084FC;stop-opacity:0.95"/><stop offset="100%" style="stop-color:#ff6b9d;stop-opacity:1"/></linearGradient>
+        <linearGradient id="flameRose" x1="0%" y1="100%" x2="0%" y2="0%"><stop offset="0%" style="stop-color:#FB7185;stop-opacity:0.95"/><stop offset="100%" style="stop-color:#FFD700;stop-opacity:1"/></linearGradient>
+        <linearGradient id="flameGreen" x1="0%" y1="100%" x2="0%" y2="0%"><stop offset="0%" style="stop-color:#34D399;stop-opacity:0.95"/><stop offset="100%" style="stop-color:#38BDF8;stop-opacity:1"/></linearGradient>
+        <linearGradient id="flameOrange" x1="0%" y1="100%" x2="0%" y2="0%"><stop offset="0%" style="stop-color:#FF6B6B;stop-opacity:0.95"/><stop offset="100%" style="stop-color:#FB7185;stop-opacity:1"/></linearGradient>
+      </defs>
+      <ellipse cx="180" cy="275" rx="140" ry="20" fill="rgba(0,0,0,0.3)"/>
+      <rect x="40" y="185" width="280" height="75" rx="18" fill="#2d1218" stroke="rgba(255,107,157,0.35)" stroke-width="1.5"/>
+      <path d="M40 185 Q65 165 90 185 Q115 205 140 185 Q165 165 190 185 Q215 205 240 185 Q265 165 290 185 Q315 205 320 185 L320 195 Q315 215 290 195 Q265 175 240 195 Q215 215 190 195 Q165 175 140 195 Q115 215 90 195 Q65 175 40 195 Z" fill="rgba(255,107,157,0.22)"/>
+      <circle cx="80" cy="215" r="6" fill="rgba(255,107,157,0.45)"/>
+      <circle cx="130" cy="228" r="5" fill="rgba(255,215,0,0.35)"/>
+      <circle cx="180" cy="218" r="6" fill="rgba(192,132,252,0.45)"/>
+      <circle cx="230" cy="230" r="5" fill="rgba(255,100,150,0.45)"/>
+      <circle cx="280" cy="212" r="6" fill="rgba(255,107,157,0.35)"/>
+      <rect x="80" y="115" width="200" height="75" rx="14" fill="#3d1a24" stroke="rgba(244,114,182,0.3)" stroke-width="1.5"/>
+      <path d="M80 115 Q105 95 130 115 Q155 135 180 115 Q205 95 230 115 Q255 135 280 115 L280 125 Q255 105 230 125 Q205 145 180 125 Q155 105 130 125 Q105 145 80 125 Z" fill="rgba(244,114,182,0.18)"/>
+      <text x="180" y="162" text-anchor="middle" font-size="22" fill="rgba(255,107,157,0.5)">♥</text>
+      <g id="candles">
+        <g id="c1" class="candle-g" onclick="blowCandle(1)">
+          <rect x="102" y="83" width="10" height="36" rx="5" fill="#ff6b9d"/>
+          <ellipse id="f1" cx="107" cy="76" rx="6.5" ry="10" fill="url(#flamePink)" class="flame-el" style="animation:flicker1 1.4s ease-in-out infinite"/>
+          <ellipse id="f1i" cx="107" cy="79" rx="3.5" ry="5.5" fill="rgba(255,255,200,0.8)" class="flame-el" style="animation:flicker1 1.4s ease-in-out infinite"/>
+          <line id="s1" x1="107" y1="82" x2="107" y2="90" stroke="rgba(200,200,200,0.5)" stroke-width="1.5" opacity="0" class="smoke"/>
+        </g>
+        <g id="c2" class="candle-g" onclick="blowCandle(2)">
+          <rect x="126" y="74" width="10" height="45" rx="5" fill="#FFD700"/>
+          <ellipse id="f2" cx="131" cy="66" rx="6.5" ry="10" fill="url(#flameGold)" class="flame-el" style="animation:flicker2 1.6s ease-in-out infinite"/>
+          <ellipse id="f2i" cx="131" cy="69" rx="3.5" ry="5.5" fill="rgba(255,255,200,0.8)" class="flame-el" style="animation:flicker2 1.6s ease-in-out infinite"/>
+          <line id="s2" x1="131" y1="72" x2="131" y2="80" stroke="rgba(200,200,200,0.5)" stroke-width="1.5" opacity="0" class="smoke"/>
+        </g>
+        <g id="c3" class="candle-g" onclick="blowCandle(3)">
+          <rect x="150" y="67" width="10" height="52" rx="5" fill="#38BDF8"/>
+          <ellipse id="f3" cx="155" cy="59" rx="6.5" ry="10" fill="url(#flameBlue)" class="flame-el" style="animation:flicker3 1.3s ease-in-out infinite"/>
+          <ellipse id="f3i" cx="155" cy="62" rx="3.5" ry="5.5" fill="rgba(200,255,255,0.8)" class="flame-el" style="animation:flicker3 1.3s ease-in-out infinite"/>
+          <line id="s3" x1="155" y1="65" x2="155" y2="73" stroke="rgba(200,200,200,0.5)" stroke-width="1.5" opacity="0" class="smoke"/>
+        </g>
+        <g id="c4" class="candle-g" onclick="blowCandle(4)">
+          <rect x="174" y="74" width="10" height="45" rx="5" fill="#C084FC"/>
+          <ellipse id="f4" cx="179" cy="66" rx="6.5" ry="10" fill="url(#flamePurple)" class="flame-el" style="animation:flicker1 1.7s ease-in-out infinite"/>
+          <ellipse id="f4i" cx="179" cy="69" rx="3.5" ry="5.5" fill="rgba(220,180,255,0.8)" class="flame-el" style="animation:flicker1 1.7s ease-in-out infinite"/>
+          <line id="s4" x1="179" y1="72" x2="179" y2="80" stroke="rgba(200,200,200,0.5)" stroke-width="1.5" opacity="0" class="smoke"/>
+        </g>
+        <g id="c5" class="candle-g" onclick="blowCandle(5)">
+          <rect x="198" y="67" width="10" height="52" rx="5" fill="#FB7185"/>
+          <ellipse id="f5" cx="203" cy="59" rx="6.5" ry="10" fill="url(#flameRose)" class="flame-el" style="animation:flicker2 1.5s ease-in-out infinite"/>
+          <ellipse id="f5i" cx="203" cy="62" rx="3.5" ry="5.5" fill="rgba(255,200,200,0.8)" class="flame-el" style="animation:flicker2 1.5s ease-in-out infinite"/>
+          <line id="s5" x1="203" y1="65" x2="203" y2="73" stroke="rgba(200,200,200,0.5)" stroke-width="1.5" opacity="0" class="smoke"/>
+        </g>
+        <g id="c6" class="candle-g" onclick="blowCandle(6)">
+          <rect x="222" y="78" width="10" height="41" rx="5" fill="#34D399"/>
+          <ellipse id="f6" cx="227" cy="71" rx="6.5" ry="10" fill="url(#flameGreen)" class="flame-el" style="animation:flicker3 1.4s ease-in-out infinite"/>
+          <ellipse id="f6i" cx="227" cy="74" rx="3.5" ry="5.5" fill="rgba(180,255,220,0.8)" class="flame-el" style="animation:flicker3 1.4s ease-in-out infinite"/>
+          <line id="s6" x1="227" y1="77" x2="227" y2="85" stroke="rgba(200,200,200,0.5)" stroke-width="1.5" opacity="0" class="smoke"/>
+        </g>
+        <g id="c7" class="candle-g" onclick="blowCandle(7)">
+          <rect x="246" y="83" width="10" height="36" rx="5" fill="#FF6B6B"/>
+          <ellipse id="f7" cx="251" cy="76" rx="6.5" ry="10" fill="url(#flameOrange)" class="flame-el" style="animation:flicker1 1.6s ease-in-out infinite"/>
+          <ellipse id="f7i" cx="251" cy="79" rx="3.5" ry="5.5" fill="rgba(255,200,180,0.8)" class="flame-el" style="animation:flicker1 1.6s ease-in-out infinite"/>
+          <line id="s7" x1="251" y1="82" x2="251" y2="90" stroke="rgba(200,200,200,0.5)" stroke-width="1.5" opacity="0" class="smoke"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <div id="cake-progress" style="color:rgba(255,255,255,0.35);font-size:0.9rem;margin-top:18px">Klik lilin untuk meniup — 0/7 telah ditiup</div>
+  <button class="relight-btn" onclick="relightCandles()">🕯️ Nyalakan Kembali</button>
+
+  <div class="cake-msg-overlay" id="cake-win">
+    <div class="cake-msg-box">
+      🎉<br>Selamat Ulang Tahun<br>Sayangku!<br>
+      <span class="sub">Semua harapanmu akan terkabul 💕</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div id="shooting-star"></div>
+  <div class="footer-main">
+    Dibuat dengan <span class="heart-beat">💖</span> untuk<br>
+    <span>Hilda Meilinda Putri</span>
+    <span class="footer-age">17 tahun yang penuh cinta</span>
+  </div>
+  <div class="share-btns">
+    <button class="share-btn" onclick="copyLink()">🔗 Salin Tautan</button>
+    <button class="share-btn" onclick="shareWA()">💬 WhatsApp</button>
+  </div>
+  <p class="footer-small">✨ Semoga semua harapanmu menjadi kenyataan, sayang ✨</p>
+</footer>
+
+<div id="music-player" onclick="toggleMusic()">
+  <span class="player-icon">🎵</span>
+  <span class="player-label" id="player-label">🎹 Piano HBD</span>
+  <div class="equalizer" id="equalizer">
+    <div class="eq-bar"></div>
+    <div class="eq-bar"></div>
+    <div class="eq-bar"></div>
+    <div class="eq-bar"></div>
+    <div class="eq-bar"></div>
+  </div>
+</div>
+
+<script>
+const CONFIG = {
+  name: "Hilda Meilinda Putri",
+  birthdate: "2026-05-26",
+  candleCount: 7
+};
+
+document.getElementById('hero-name').textContent = CONFIG.name;
+
+// === PARTICLES ===
+const canvas = document.getElementById('particles-canvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+function resizeCanvas(){canvas.width = window.innerWidth; canvas.height = window.innerHeight;}
+function createParticles(){
+  particles = [];
+  for(let i=0; i<250; i++){
+    particles.push({
+      x: Math.random()*canvas.width,
+      y: Math.random()*canvas.height,
+      r: Math.random()*2.2+0.3,
+      o: Math.random(),
+      s: Math.random()*0.004+0.001,
+      dx: (Math.random()-0.5)*0.12,
+      dy: (Math.random()-0.5)*0.12,
+      color: Math.random()>0.7 ? '255,107,157' : (Math.random()>0.5 ? '255,215,0' : '255,255,255')
+    });
+  }
+}
+function drawParticles(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particles.forEach(p=>{
+    p.o += p.s;
+    if(p.o>1||p.o<0.1) p.s *= -1;
+    p.x += p.dx; p.y += p.dy;
+    if(p.x<0) p.x = canvas.width;
+    if(p.x>canvas.width) p.x = 0;
+    if(p.y<0) p.y = canvas.height;
+    if(p.y>canvas.height) p.y = 0;
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle = `rgba(${p.color},${p.o})`;
+    ctx.fill();
+  });
+  requestAnimationFrame(drawParticles);
+}
+resizeCanvas(); createParticles(); drawParticles();
+window.addEventListener('resize', ()=>{resizeCanvas(); createParticles();});
+
+// === CONFETTI ===
+const confettiColors = ['#FF6B9D','#F472B6','#FFD700','#C084FC','#FB7185','#FF6B6B','#FFC44D','#34D399','#38BDF8'];
+function spawnConfetti(count=40){
+  for(let i=0; i<count; i++){
+    const el = document.createElement('div');
+    el.className = 'confetti';
+    const clr = confettiColors[Math.floor(Math.random()*confettiColors.length)];
+    el.style.cssText = `
+      left:${Math.random()*100}%; background:${clr};
+      width:${Math.random()*12+6}px; height:${Math.random()*12+6}px;
+      border-radius:${Math.random()>0.4?'50%':'3px'};
+      animation:fall ${Math.random()*4+4}s linear ${Math.random()*2}s forwards;
+      opacity:${Math.random()*0.6+0.4};
+      transform:rotate(${Math.random()*360}deg);
+    `;
+    document.body.appendChild(el);
+    setTimeout(()=>el.remove(),8000);
+  }
+}
+const confettiStyle = document.createElement('style');
+confettiStyle.textContent = `@keyframes fall{from{top:-20px;transform:rotate(0deg)}to{top:110vh;transform:rotate(720deg)}}`;
+document.head.appendChild(confettiStyle);
+// setTimeout(()=>spawnConfetti(50),1500); // Disabled for quiet experience
+setInterval(()=>{if(Math.random()>0.85) spawnConfetti(5);},15000); // Very subtle, occasional
+
+// === SPARKLES ===
+function createSparkle(x,y){
+  const s = document.createElement('div');
+  s.className = 'sparkle';
+  s.style.cssText = `left:${x}px;top:${y}px;width:8px;height:8px;background:radial-gradient(circle,#FFD700,transparent);`;
+  document.body.appendChild(s);
+  setTimeout(()=>s.remove(),1500);
+}
+document.addEventListener('click', e=>{
+  for(let i=0;i<5;i++){
+    setTimeout(()=>createSparkle(e.clientX+(Math.random()-0.5)*40, e.clientY+(Math.random()-0.5)*40), i*50);
+  }
+});
+
+// === COUNTDOWN ===
+function updateCountdown(){
+  const bday = new Date(CONFIG.birthdate);
+  const now = new Date();
+  const thisYear = new Date(now.getFullYear(), bday.getMonth(), bday.getDate());
+  const nextBday = thisYear < now ? new Date(now.getFullYear()+1, bday.getMonth(), bday.getDate()) : thisYear;
+  const diff = nextBday - now;
+  const isToday = (now.getDate()===bday.getDate() && now.getMonth()===bday.getMonth());
+  if(isToday){
+    document.querySelector('.flip-cards').style.display = 'none';
+    document.getElementById('today-msg').style.display = 'block';
+    document.getElementById('today-sub').style.display = 'block';
+    // No confetti explosion - keeping it calm and elegant for her special day
+  } else {
+    const d = Math.floor(diff/86400000);
+    const h = Math.floor((diff%86400000)/3600000);
+    const m = Math.floor((diff%3600000)/60000);
+    const s = Math.floor((diff%60000)/1000);
+    const pad = n => String(n).padStart(2,'0');
+    const setNum = (id,val)=>{
+      const el = document.getElementById(id);
+      const cur = el.textContent;
+      if(cur !== pad(val)){
+        el.style.transform = 'translateY(-10px)'; el.style.opacity = '0';
+        setTimeout(()=>{el.textContent=pad(val); el.style.transform='translateY(0)'; el.style.opacity='1'; el.style.transition='all 0.25s';},150);
+      }
+    };
+    setNum('cd-d',d); setNum('cd-h',h); setNum('cd-m',m); setNum('cd-s',s);
+  }
+}
+updateCountdown(); setInterval(updateCountdown,1000);
+
+// === LIGHTBOX ===
+const lbData = [
+  {emoji:'✨', title:'Pertemuan Pertama', caption:'Hari itu rasanya seperti mimpi. Aku bertemu seseorang yang ternyata akan mengubah seluruh hidupku. Kamu datang tanpa peringatan, tapi tinggal selamanya di hatiku. Aku masih ingat detailnya — cara kamu tersenyum, cara matamu berbinar, dan perasaan aneh yang langsung aku rasakan. Itu bukan cuma pertemuan biasa, itu adalah takdir yang sedang beraksi 💫'},
+  {emoji:'💘', title:'Saat Aku Jatuh Cinta', caption:'Aku nggak tahu persis kapan rasanya mulai tumbuh. Mungkin saat kamu tertawa lepas, mungkin saat kamu cerita hal-hal kecil dengan semangat, mungkin saat kamu diam aja aku udah senang. Yang jelas, hatiku memilihmu tanpa perlu izin. Dan setiap hari, aku makin yakin bahwa cinta ini adalah yang paling tulus yang pernah aku rasakan 💕'},
+  {emoji:'😤', title:'Sikapnya yang Ngeselin', caption:'Kadang kamu bikin aku kesel, bikin aku bingung, bikin aku geleng-geleng kepala. Kamu bandel, kamu nyebelin, kamu suka bikin aku mikir keras. Tapi di balik semua itu, ada senyum lucu yang selalu berhasil bikin aku lupa marah. Ada cara kamu manja yang bikin aku melt. Dasar, manis banget sih kamu ini 😤💕'},
+  {emoji:'🤗', title:'Dia Menghargai Aku', caption:'Kamu selalu lihat aku dengan cara yang beda. Kamu ngehargain hal-hal kecil yang aku lakuin, dengerin cerita-cerita gak pentingku dengan serius, dan bikin aku ngerasa berharga. Kamu nggak pernah judge aku, kamu selalu ada di saat aku butuh. Terima kasih sudah menerima aku apa adanya, dengan segala kekuranganku 🤗'},
+  {emoji:'🥺', title:'Betapa Sayangnya Aku', caption:'Aku nggak bisa jelasin dengan kata-kata seberapa sayangnya aku sama kamu. Yang aku tahu, setiap detik aku mikirin kamu, setiap hari aku bersyukur punya kamu. Kamu adalah rumahku, tempatku pulang, alasan aku tersenyum. Aku nggak bisa bayangin hidup tanpa kamu. Kamu adalah segalanya, sayangku 🥺💕'},
+  {emoji:'🌟', title:'Masa Depan Kita', caption:'Aku nggak tahu apa yang akan terjadi nanti. Tapi satu hal yang pasti: aku mau terus ada di sampingmu, melewati setiap suka dan duka bersama. Ini baru awal, sayang. Masih banyak cerita indah yang akan kita tulis bersama, masih banyak tawa dan air mata yang akan kita bagi. Aku siap untuk semua itu, asalkan denganmu 🌟'}
+];
+function openLightbox(i){
+  const d = lbData[i];
+  document.getElementById('lb-emoji').textContent = d.emoji;
+  document.getElementById('lb-title').textContent = d.title;
+  document.getElementById('lb-caption').textContent = d.caption;
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLightbox(){document.getElementById('lightbox').classList.remove('open');}
+
+// === LETTER TYPEWRITER ===
+const letterText = [
+  "Hai, Hilda sayangku. Hari ini langit sedikit lebih cerah, bintang sedikit lebih terang, dan dunia sedikit lebih indah — semua karena kamu ada di dalamnya, merayakan hari kelahiranmu yang ke-17.",
+  "Aku masih ingat jelas hari pertama kita bertemu. Rasanya seperti mimpi yang terlalu indah untuk jadi nyata. Tapi ternyata, kamu adalah kenyataan terindah yang pernah aku miliki. Kamu datang tanpa peringatan, tapi tinggal selamanya di hatiku.",
+  "Kamu mungkin nggak menyadarinya, tapi setiap senyummu menghangatkan hari-hariku. Setiap kata baikmu meninggalkan bekas yang lebih dalam dari yang kamu tahu. Kamu punya cara ajaib untuk bikin segalanya terasa lebih baik, lebih berwarna, lebih hidup.",
+  "Aku tahu kadang aku bikin kamu kesel, aku ngeselin, aku bandel. Tapi percayalah, di balik semua itu, ada cinta yang begitu besar untukmu. Aku sayang kamu, lebih dari yang bisa aku ungkapkan dengan kata-kata.",
+  "Di hari istimewa ini, aku ingin kamu tahu: kamu layak mendapatkan semua kebahagiaan di dunia ini. Semua impianmu pantas menjadi kenyataan. Dan aku akan selalu ada di sini, mendukungmu, mencintaimu, dan bersyukur setiap hari karena punya kamu.",
+  "Selamat ulang tahun yang ke-17, sayangku. Semoga tahun baru ini membawamu lebih dekat ke versi terbaik dirimu. Kami selalu di sini, bangga menjadi bagian dari perjalananmu. Aku cinta kamu, sekarang dan selamanya. 💕"
+];
+let letterDone = false;
+function startTypewriter(){
+  if(letterDone) return;
+  letterDone = true;
+  const el = document.getElementById('letter-body');
+  const sig = document.getElementById('letter-sig');
+  let fullText = letterText.join('\n\n');
+  let i = 0;
+  el.innerHTML = '<p id="typewriter-cursor">|</p>';
+  function type(){
+    if(i < fullText.length){
+      const ch = fullText[i];
+      const cursor = document.getElementById('typewriter-cursor');
+      if(ch === '\n' && fullText[i+1] === '\n'){
+        cursor.insertAdjacentHTML('beforebegin','</p><p>'); i += 2;
+      } else {
+        cursor.insertAdjacentText('beforebegin', ch); i++;
+      }
+      setTimeout(type, Math.random()*25 + 12);
+    } else {
+      document.getElementById('typewriter-cursor').remove();
+      setTimeout(()=>sig.classList.add('show'),600);
+    }
+  }
+  setTimeout(type,400);
+}
+
+// === WISHES ===
+const wishEmojis = ['🌟','✨','💫','🌙','⭐','🎊','🎉','💕','💜','💙','🌸','💖'];
+let wishes = [];
+function sendWish(){
+  const inp = document.getElementById('wish-input');
+  const txt = inp.value.trim();
+  if(!txt) return;
+  inp.value = '';
+  const bubble = document.createElement('div');
+  bubble.className = 'wish-bubble-fly';
+  bubble.textContent = '💕 ' + txt;
+  bubble.style.left = Math.random()*50 + 25 + '%';
+  document.body.appendChild(bubble);
+  setTimeout(()=>bubble.remove(),3000);
+  wishes.unshift(txt);
+  if(wishes.length > 12) wishes.pop();
+  renderWishes();
+}
+function renderWishes(){
+  const grid = document.getElementById('wishes-grid');
+  grid.innerHTML = '';
+  wishes.forEach((w,i)=>{
+    const card = document.createElement('div');
+    card.className = 'wish-note';
+    card.innerHTML = `<span class="wish-note-icon">${wishEmojis[i%wishEmojis.length]}</span>${w}<div class="wish-note-author">— untuk Hilda 💕</div>`;
+    grid.appendChild(card);
+  });
+}
+
+// === CANDLES ===
+let blownCandles = new Set();
+function blowCandle(n){
+  if(blownCandles.has(n)) return;
+  blownCandles.add(n);
+  document.getElementById('f'+n).style.opacity = '0';
+  document.getElementById('f'+n+'i').style.opacity = '0';
+  const smoke = document.getElementById('s'+n);
+  smoke.style.opacity = '1';
+  smoke.style.animation = 'riseSmoke 2s ease forwards';
+  setTimeout(()=>smoke.style.opacity='0',2000);
+  document.getElementById('cake-progress').textContent = `Klik lilin untuk meniup — ${blownCandles.size}/${CONFIG.candleCount} telah ditiup`;
+  if(blownCandles.size === CONFIG.candleCount){
+    setTimeout(()=>{
+      document.getElementById('cake-win').classList.add('show');
+      // Gentle celebration without loud effects
+      spawnConfetti(15);
+    },500);
+  }
+}
+function relightCandles(){
+  blownCandles.clear();
+  document.querySelectorAll('.flame-el').forEach(f=>f.style.opacity='1');
+  document.querySelectorAll('.smoke').forEach(s=>s.style.opacity='0');
+  document.getElementById('cake-win').classList.remove('show');
+  document.getElementById('cake-progress').textContent = `Klik lilin untuk meniup — 0/${CONFIG.candleCount} telah ditiup`;
+}
+document.getElementById('cake-win').addEventListener('click',()=>document.getElementById('cake-win').classList.remove('show'));
+const smokeStyle = document.createElement('style');
+smokeStyle.textContent = `@keyframes riseSmoke{0%{stroke-dashoffset:0;opacity:0.6;transform:translateY(0)}100%{opacity:0;transform:translateY(-30px)}}`;
+document.head.appendChild(smokeStyle);
+
+// === MUSIC ===
+let audioCtx = null, isPlaying = false, gainNode = null, interval = null;
+const notes = [523,587,659,698,784,880,988];
+function playNote(freq,when,dur){
+  const osc = audioCtx.createOscillator();
+  const g = audioCtx.createGain();
+  osc.connect(g); g.connect(gainNode);
+  osc.frequency.value = freq; osc.type = 'sine';
+  g.gain.setValueAtTime(0,when);
+  g.gain.linearRampToValueAtTime(0.12,when+0.05);
+  g.gain.exponentialRampToValueAtTime(0.001,when+dur-0.05);
+  osc.start(when); osc.stop(when+dur);
+}
+function playMelody(){
+  const now = audioCtx.currentTime;
+  // Happy Birthday in C major - piano style with chords
+  // Melody notes (C4=261.63, D4=293.66, E4=329.63, F4=349.23, G4=392, A4=440, B4=493.88, C5=523.25)
+  const melody = [
+    // "Happy birthday to you"
+    {n:392,t:0,d:0.4},{n:392,t:0.4,d:0.4},{n:440,t:0.8,d:0.8},{n:392,t:1.6,d:0.8},{n:523.25,t:2.4,d:0.8},{n:493.88,t:3.2,d:1.2},
+    // "Happy birthday to you" 
+    {n:392,t:4.6,d:0.4},{n:392,t:5.0,d:0.4},{n:440,t:5.4,d:0.8},{n:392,t:6.2,d:0.8},{n:587.33,t:7.0,d:0.8},{n:523.25,t:7.8,d:1.2},
+    // "Happy birthday dear Hilda"
+    {n:392,t:9.2,d:0.4},{n:392,t:9.6,d:0.4},{n:783.99,t:10.0,d:0.8},{n:659.25,t:10.8,d:0.8},{n:523.25,t:11.6,d:0.8},{n:493.88,t:12.4,d:0.8},{n:440,t:13.2,d:1.0},
+    // "Happy birthday to you"
+    {n:698.46,t:14.4,d:0.4},{n:698.46,t:14.8,d:0.4},{n:659.25,t:15.2,d:0.8},{n:523.25,t:16.0,d:0.8},{n:587.33,t:16.8,d:0.8},{n:523.25,t:17.6,d:1.6}
+  ];
+  // Chord accompaniment
+  const chords = [
+    {n:[261.63,329.63,392],t:0,d:1.6,v:0.06},      // C major
+    {n:[261.63,329.63,392],t:1.6,d:1.6,v:0.06},      // C major
+    {n:[349.23,440,523.25],t:3.2,d:1.4,v:0.05},      // F major
+    {n:[261.63,329.63,392],t:4.6,d:1.6,v:0.06},      // C major
+    {n:[261.63,329.63,392],t:6.2,d:1.6,v:0.06},      // C major
+    {n:[392,493.88,587.33],t:7.8,d:1.4,v:0.05},      // G major
+    {n:[261.63,329.63,392],t:9.2,d:1.6,v:0.06},      // C major
+    {n:[261.63,329.63,392],t:10.8,d:1.6,v:0.06},     // C major
+    {n:[329.63,415.3,493.88],t:12.4,d:1.0,v:0.05},   // D minor
+    {n:[349.23,440,523.25],t:14.4,d:1.6,v:0.06},     // F major
+    {n:[349.23,440,523.25],t:16.0,d:1.6,v:0.06},     // F major
+    {n:[392,493.88,587.33],t:17.6,d:1.6,v:0.05}      // G major
+  ];
+  // Play melody
+  melody.forEach(note=>{
+    playNote(note.n, now+note.t, note.d);
+  });
+  // Play chords (softer)
+  chords.forEach(chord=>{
+    chord.n.forEach(cnote=>{
+      const osc = audioCtx.createOscillator();
+      const g = audioCtx.createGain();
+      osc.connect(g); g.connect(gainNode);
+      osc.frequency.value = cnote; osc.type = 'triangle';
+      g.gain.setValueAtTime(0, now+chord.t);
+      g.gain.linearRampToValueAtTime(chord.v, now+chord.t+0.1);
+      g.gain.exponentialRampToValueAtTime(0.001, now+chord.t+chord.d-0.1);
+      osc.start(now+chord.t); osc.stop(now+chord.t+chord.d);
+    });
+  });
+}
+function toggleMusic(){
+  if(!audioCtx){audioCtx = new(window.AudioContext||window.webkitAudioContext)(); gainNode = audioCtx.createGain(); gainNode.gain.value = 0.4; gainNode.connect(audioCtx.destination);}
+  if(isPlaying){
+    clearInterval(interval); isPlaying = false;
+    document.getElementById('player-label').textContent = 'Lagu untuk Hilda';
+    document.getElementById('player-label').classList.remove('playing');
+    document.getElementById('equalizer').classList.remove('playing');
+    document.getElementById('music-player').classList.remove('playing');
+  } else {
+    playMelody(); interval = setInterval(playMelody, 6200); isPlaying = true;
+    document.getElementById('player-label').textContent = '🎹 Piano HBD...';
+    document.getElementById('player-label').classList.add('playing');
+    document.getElementById('equalizer').classList.add('playing');
+    document.getElementById('music-player').classList.add('playing');
+  }
+}
+
+// === SHARE ===
+function copyLink(){
+  navigator.clipboard.writeText(window.location.href).catch(()=>{});
+  const btn = event.target; btn.textContent = '✅ Tersalin!'; setTimeout(()=>btn.textContent='🔗 Salin Tautan',2500);
+}
+function shareWA(){
+  const msg = `🎂 Selamat Ulang Tahun ${CONFIG.name}! Ini hadiah spesial untukmu: ${window.location.href}`;
+  window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`);
+}
+
+// === SCROLL REVEAL ===
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      if(e.target.id === 'letter-card') startTypewriter();
+    }
+  });
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// === NAV SCROLL ===
+window.addEventListener('scroll',()=>{
+  const nav = document.getElementById('main-nav');
+  if(window.scrollY > 80) nav.classList.add('nav-scrolled');
+  else nav.classList.remove('nav-scrolled');
+});
+</script>
+</body>
+</html>
